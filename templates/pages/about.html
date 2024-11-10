@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}About Me{% endblock title %}
 
 {% block content %}
 
 
-<div class="container">About the developer</div>
-<p>Biggest lorem ipsum fan</p>
-
+<div class="container">
+      <h1 class="home-title">About the developer</h1>
+      <div class="body-text">
+            <img src="{% static 'profile.jpeg' %}" alt="profile picture" class="profile-picture">
+            <p>Emilio is an engineering student who loves math, coding, and helping others learn. He's also passionate about spirituality, Buddhism, and psychedelics. His interest in these topics led him to create a blog about one of his favorite books, VALIS by Philip K. Dick.</p>
+      </div>
+</div>
 {% endblock content%}

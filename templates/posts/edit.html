@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
 {% block title %}Edit Post{% endblock title %}
 {% block content %}
-<h1>Edit Post</h1>
-<form method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" class="btn btn-success" value="Edit">
-</form>
+<div class="edit-container">
+    <h1 class="edit-title">Edit Post</h1>
+    <form method="POST" class="edit-form">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+            <span class="helptext">{{ field.help_text }}</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="edit-btn">Edit</button>
+    </form>
+</div>
 {% endblock content %}

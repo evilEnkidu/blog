@@ -3,18 +3,20 @@
 {% block title %}Posts{% endblock title %}
 
 {% block content %}
-<h1>Posts</h1>
-{% for post in post_list %}
-<div class="card"> 
-      <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.subtitle }}</h6>
-            <small>By: {{ post.author }} | On {{ post.created_on }}</small>
-            <p class="card-text">{{ post.body|truncatechars:128 }}</p>
-            <a href="{% url 'detail' post.id %}"></a>
-            <a href="{% url 'detail' post.id %}" class="card-link">Continue reading</a>
+<div class="posts-container">
+      <h1 class="posts-title">Posts</h1>
+      <div class="posts-grid">
+          {% for post in post_list %}
+          <div class="post-card">
+              <div class="post-card-body">
+                  <h5 class="post-title">{{ post.title }}</h5>
+                  <h6 class="post-subtitle">{{ post.subtitle }}</h6>
+                  <small class="post-meta">By: {{ post.author }} | On {{ post.created_on }}</small>
+                  <p class="post-body">{{ post.body|truncatechars:128 }}</p>
+                  <a href="{% url 'detail' post.id %}" class="post-link">Continue reading</a>
+              </div>
+          </div>
+          {% endfor %}
       </div>
-</div>
-<br/>
-{% endfor %}
+  </div>
 {% endblock content %}
